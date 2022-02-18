@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,600;1,300;1,400&display=swap');
+
+.header {
+    background-color: #E5989B;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.brand {
+    width: 300px;
+    font-size: 3rem;
+    color: #fff;
+    font-weight: 200;
+    text-align: center;
+    align-self: center;
+}
+
+.contenedorMenu {
+    display: flex;
+    justify-content: center;
+}
+.menu {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 200;
+}
+
+
+.carrito {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.carrito img {
+    align-self: center;
+}
+
+.carrito h2 {
+    align-self: center;
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: 400;
+}
