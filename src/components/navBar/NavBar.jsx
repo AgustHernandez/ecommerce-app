@@ -1,7 +1,8 @@
 import React from 'react'
+import CartWidget from '../cartWidget/CartWidget';
 import './styleNavBar.css';
 
-const navBar = () => {
+const NavBar = () => {
 
     return (
         <nav className='header'>
@@ -14,12 +15,9 @@ const navBar = () => {
                     <li className='listMenu'>CONTACTO</li>
                 </ul>
             </div>
-            <div className='carrito'>
-                <img src="" alt="" />
-                <h2>$ 0,00</h2>
-            </div>
+            <CartWidget/>
         </nav>
     );
 }
 
-export default navBar
+export default NavBar
