@@ -1,15 +1,15 @@
 import './App.css';
 import HeroSection from './components/heroSection/HeroSection';
+import MsjBienvenida from './components/msjBienvenida/MsjBienvenida';
 import NavBar from './components/navBar/NavBar';
+
 
 function App() {
   
   return (
     <div className='body'>
-      <header>
         <NavBar/>
-        <HeroSection/>
-      </header>
+        <HeroSection MsjBienvenida={MsjBienvenida}/>
     </div>
   );
 }

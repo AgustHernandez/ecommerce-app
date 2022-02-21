@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,600;1,300;1,400&display=swap');
 
-.HeroSection {
+.imgPortada {
+    display: block;
     position: relative;
-    display: inline-block;
-    text-align: center;
+    height: 500px;
+    width: 1535px;
+    opacity: 40%;
 }
