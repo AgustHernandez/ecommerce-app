@@ -13,7 +13,7 @@ function App() {
         <NavBar/>
         <HeroSection MsjBienvenida={MsjBienvenida}/>
         <ItemListContainer/>
-        <ItemCount />
+        <ItemCount onAdd={mostrarCant}/>
     </div>
   );
 }

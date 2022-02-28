@@ -45,7 +45,7 @@ function ItemCount(onAdd) {
         </button>
       </div>
       <div>
-        <button onClick={mostrarCant}>Agregar al carrito</button>
+        <button>Agregar al carrito</button>
       </div>
     </div>
   )
