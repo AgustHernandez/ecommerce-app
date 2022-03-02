@@ -1,22 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ItemCount from '../ItemCount/ItemCount'
+import ItemList from '../ItemList/ItemList';
 import './styleItemListContainer.css';
-//import { getFetch } from '../../helpers/getFetch'
+import { getFetch } from '../../helpers/getFetch'
 
 function ItemListContainer() {
-
-  return (
-    <div className='listContainer'>
-      <ItemCount stock={5} initial={1}/>
-    </div>
-  )
-}
-
-export default ItemListContainer
-
-/*function ItemListContainer() {
-    const [productos, setProductos] = useState([])
-    const [loading, setloading] = useState(true)
+  const [productos, setProductos] = useState([])
+  const [loading, setloading] = useState(true)
     useEffect(() => {
         getFetch
         .then((respuesta) => {
@@ -29,10 +19,13 @@ export default ItemListContainer
 
   return (
     <>
-        {loading ? <h1>Cargando...</h1> 
+      { loading ? <h3>Cargando...</h3>
         :
-        productos.map((prod) => <li key={prod.id}>{prod.name}</li>)}
-        
+        <ItemList productos={productos} />
+      }
+      <ItemCount stock={5} initial={1}/>
     </>
   )
-}*/
+}
+
+export default ItemListContainer

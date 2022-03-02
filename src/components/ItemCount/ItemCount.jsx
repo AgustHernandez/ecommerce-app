@@ -23,7 +23,7 @@ function ItemCount({stock, initial}) {
     sumaCant = () => setCant(stock)
   }
 
-  let mostrarCant = () =>{ 
+  const mostrarCant = () =>{ 
     if (stockRemanente > 0) {
       console.log(`La cantidad elegida es:` + cant)
     }
