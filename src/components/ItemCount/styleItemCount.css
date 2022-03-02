@@ -1,1 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,600;1,300;1,400&display=swap');
+
+.containerCant {
+    width: 150px;
+    height: 25px;
+    background-color: #fff;
+    border: rgb(58, 57, 57) solid 1px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    margin: 5px 690px;
+    gap: 50px;
+}
+
+.buttonCant {
+    background-color: transparent;
+    border: none;
+}
+
+.labelCant {
+    font-size: 2rem;
+}
+
+.buttonAgregar {
+    background-color: transparent;
+    border-color: rgb(59, 59, 228);
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+}
