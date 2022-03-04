@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import ItemCount from '../ItemCount/ItemCount'
 import ItemList from '../ItemList/ItemList';
 import './styleItemListContainer.css';
 import { getFetch } from '../../helpers/getFetch'
@@ -18,13 +17,12 @@ function ItemListContainer() {
     }, [])
 
   return (
-    <>
-      { loading ? <h3>Cargando...</h3>
+    <div div className='containerItems'>
+      { loading ? <h2 className='loading'>Cargando...</h2>
         :
         <ItemList productos={productos} />
       }
-      <ItemCount stock={5} initial={1}/>
-    </>
+    </div>
   )
 }
 

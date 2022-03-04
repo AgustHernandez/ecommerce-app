@@ -8,8 +8,8 @@
     border-radius: 5px;
     display: flex;
     justify-content: center;
-    margin: 5px 690px;
     gap: 50px;
+    margin: 10px 50px;
 }
 
 .buttonCant {
@@ -23,8 +23,9 @@
 
 .buttonAgregar {
     background-color: transparent;
-    border-color: rgb(59, 59, 228);
+    border-color: #e5989b;
     border-radius: 5px;
     width: 150px;
     height: 30px;
+    margin-bottom: 10px;
 }
