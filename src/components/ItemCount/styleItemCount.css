@@ -1,18 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,600;1,300;1,400&display=swap');
 
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .containerCant {
+    position: relative;
     width: 150px;
     height: 25px;
     background-color: #fff;
     border: rgb(58, 57, 57) solid 1px;
     border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    margin: 10px 50px;
 }
 
-.buttonCant {
+.buttonCantMenos {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    background-color: transparent;
+    border: none;
+}
+
+.buttonCantMas {
+    position: absolute;
+    right: 10px;
+    top: 5px;
     background-color: transparent;
     border: none;
 }

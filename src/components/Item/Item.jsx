@@ -1,5 +1,5 @@
 import React from 'react'
-import ItemCount from '../ItemCount/ItemCount'
+import { Link } from 'react-router-dom';
 import './styleItem.css';
 
 function Item({prod}) {
@@ -15,9 +15,10 @@ function Item({prod}) {
         <div className='containerDescrip'>
           <p className='descripProd'>{prod.description}</p>
           <p className='precioProd'>$ {prod.precio}</p>
-          <button className='buttonProd'> Ver descripción </button>
+          <Link to={`detalle/${prod.id}`}>
+            <button className='buttonProd'> Ver descripción </button>
+          </Link>
         </div>
-        <ItemCount stock={5} initial={1}/>
     </div>
   )
 }

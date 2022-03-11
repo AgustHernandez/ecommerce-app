@@ -1,0 +1,78 @@
+
+.containerDetail {
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+    margin: 80px 0px;
+}
+
+.imagenProd {
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
+}
+
+.detail {
+    text-align: center;
+    width: auto;
+}
+
+.tituloProd {
+    font-size: 4.5rem;
+    padding: 10px 0px;
+}
+
+.parrafoProd {
+    font-size: 2.5rem;
+    padding-bottom: 20px;
+}
+
+.precioProducto {
+    font-size: 3rem;
+    padding-bottom: 20px;
+}
+
+.divColor {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+.color {
+    font-size: 2.2rem;
+}
+
+.buttonColor1 {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border: rgb(100, 98, 98) solid 2px;
+}
+
+.buttonColor2 {
+    width: 20px;
+    height: 20px;
+    background-color: rgb(177, 159, 159);
+    border: rgb(100, 98, 98) solid 2px;
+}
+
+.costoYenvio {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 30px;
+}
+
+.parrafoCostoEnvio {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.parrafoEnvio {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
