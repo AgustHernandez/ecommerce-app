@@ -1,5 +1,5 @@
 let productos = [
-    {id: "1", nombre: "Taza", imagen:'https://drive.google.com/thumbnail?id=1_m_ml_oUxvpH_PldWkvqiyBZy2xhJhZH', categoria: "Cocina", description: "Taza de cerámica con diseño", stock: 10, precio: 800},
+    {id: "1", nombre: "Taza", imagen: 'https://drive.google.com/thumbnail?id=1_m_ml_oUxvpH_PldWkvqiyBZy2xhJhZH', categoria: "Cocina", description: "Taza de cerámica con diseño", stock: 10, precio: 800},
     {id: "2", nombre: "Macetero Vertical", imagen:'https://drive.google.com/thumbnail?id=1qutYQSHnVlLnoV5qJatKPz8ZT4lLk3Jy', categoria: "Decoración", description: "Macetero vertical", stock: 5, precio: 1000},
     {id: "3", nombre: "Maceta", imagen:'https://drive.google.com/thumbnail?id=1hzdTWyqVT9m-eA2lKgvXnbJeZDarrWhU', categoria: "Decoración",description: "Maceta de cerámica con diseño", stock: 15, precio: 950},
     {id: "4", nombre: "Cesto para Juguetes", imagen:'https://drive.google.com/thumbnail?id=1ouz98KPD49jGRPOD2HhNHlFyT7-GXIwj', categoria: "Mascotas",description: "Cesto para juguetes con diseño", stock: 10, precio: 1100},
@@ -17,3 +17,4 @@ export const getFetch = new Promise((respuesta, rejected) => {
         rejected('400 not found')
     }
 })
+
