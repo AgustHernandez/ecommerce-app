@@ -1,9 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import HeroSection from './components/heroSection/HeroSection';
-import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import MsjBienvenida from './components/msjBienvenida/MsjBienvenida';
+import ItemDetailContainer from './components/Containers/ItemDetailContainer/ItemDetailContainer';
+import ItemListContainer from './components/Containers/ItemListContainer/ItemListContainer';
 import NavBar from './components/navBar/NavBar';
 import Cart from './components/Cart/Cart';
 
@@ -15,9 +13,10 @@ function App() {
     <BrowserRouter>
       <div className='body'>
         <NavBar/>
-        <HeroSection MsjBienvenida={MsjBienvenida}/>
         <Routes>
           <Route path='/' element={<ItemListContainer/>}/>
+          <Route path='/productos' element={<ItemListContainer/>}/>
+          <Route path='/categoria/:categoriaId' element={<ItemListContainer/>}/>
           <Route path='/detalle/:detalleId' element={<ItemDetailContainer/>}/>
           <Route path='/cart' element={<Cart/>}/>
         </Routes>
@@ -27,3 +26,4 @@ function App() {
 }
 
 export default App;
+

@@ -14,6 +14,7 @@
     font-weight: 200;
     text-align: center;
     align-self: center;
+    text-decoration: none;
 }
 
 .contenedorMenu {
@@ -31,20 +32,22 @@
     font-weight: 200;
 }
 
+.menu :link {
+    color: white;
+}
+
+.menu :visited {
+    color: white;
+}
+
+.menuLista {
+    list-style: none;
+    text-decoration: none;
+}
 
 .carrito {
     width: 300px;
     display: flex;
     justify-content: center;
-}
-
-.carrito img {
-    align-self: center;
-}
-
-.carrito h2 {
-    align-self: center;
-    font-size: 1.8rem;
-    color: #fff;
-    font-weight: 400;
+    text-decoration: none;
 }

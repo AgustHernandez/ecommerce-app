@@ -1,0 +1,9 @@
+
+.divProductos {
+    margin: 20px 0px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    width: 1500px;
+    place-items: center;
+}
