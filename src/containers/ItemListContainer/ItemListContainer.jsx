@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { getFetch } from '../../../helpers/getFetch'
+import { getFetch } from '../../helpers/getFetch'
 import { useParams } from 'react-router-dom';
-import ItemList from '../../ItemList/ItemList';
+import ItemList from '../../components/ItemList/ItemList';
 
 import './styleItemListContainer.css';
 
