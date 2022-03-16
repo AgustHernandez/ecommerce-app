@@ -7,7 +7,7 @@ import './styleItemListContainer.css';
 
 function ItemListContainer() {
   const [productos, setProductos] = useState([])
-  const [loading, setloading] = useState(true)
+  const [loading, setLoading] = useState(true)
   const { categoriaId } = useParams()
 
     useEffect(() => {
@@ -18,7 +18,7 @@ function ItemListContainer() {
         })
         .then((resp) => setProductos(resp.filter(prod => prod.categoria === categoriaId) ))
         .then(err => console.log(err))
-        .finally(() => setloading(false))
+        .finally(() => setLoading(false))
       } else {
         getFetch
         .then((respuesta) => {
@@ -26,7 +26,7 @@ function ItemListContainer() {
         })
         .then((resp) => setProductos(resp))
         .catch(err => console.log(err))
-        .finally(() => setloading(false))
+        .finally(() => setLoading(false))
       }
     }, [categoriaId])
 

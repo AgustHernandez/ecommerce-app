@@ -20,8 +20,6 @@ const NavBar = () => {
                         <NavLink to='/categoria/hogar' className="menuLista">HOGAR</NavLink>
                         <NavLink to='/categoria/jardin' className="menuLista">JARDÍN</NavLink>
                         <NavLink to='/categoria/mascotas' className="menuLista">MASCOTAS</NavLink>
-                        <NavLink to="nosotros" className="menuLista">NOSOTROS</NavLink>
-                        <NavLink to="contacto" className="menuLista">CONTACTO</NavLink>
                     </ul>
                 </div>
                 <NavLink to="/cart" element={<Cart/>} className="carrito" > <CartWidget/> </NavLink>

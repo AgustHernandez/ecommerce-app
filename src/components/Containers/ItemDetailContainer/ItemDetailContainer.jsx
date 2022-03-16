@@ -9,13 +9,13 @@ function ItemDetailContainer() {
     // llamada a api
   const [producto, setProducto] = useState({})
   const {detalleId} = useParams()
-  const [loading, setloading] = useState(true)
+  const [loading, setLoading] = useState(true)
 
   
   useEffect(() => {
         getFetch
         .then(resp => setProducto(resp.find(prod => prod.id === detalleId)))
-        .finally(() => setloading(false))
+        .finally(() => setLoading(false))
     }, [detalleId])
 
   return (
