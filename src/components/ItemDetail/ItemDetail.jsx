@@ -1,12 +1,15 @@
-import React from 'react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom';
 import ItemCount from '../ItemCount/ItemCount';
 
 import './styleItemDetail.css';
 
 function ItemDetail({producto}) {
+  const [count, setCount] = useState(null)
 
   const onAdd = (cantidad) => {
     console.log(`La cantidad elegida es: ${cantidad}`)
+    setCount(cantidad)
   }
 
   return (
@@ -29,7 +32,19 @@ function ItemDetail({producto}) {
             <button className='buttonColor2'/>
           </div>
           <div>
-            <ItemCount stock={5} initial={1} onAdd={onAdd} />
+            { count ?
+            <div>
+              <h2>Se ha agregado el producto al carrito</h2>
+              <Link to='/productos'>
+                <button>Seguir comprando</button>
+              </Link>
+              <Link to='/cart'>
+                <h3>Ver carrito</h3>
+              </Link>
+            </div>
+            :
+              <ItemCount stock={5} initial={1} onAdd={onAdd} />
+            }
           </div>
         </div>
         <div className='costoYenvio'>
