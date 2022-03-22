@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './styleItemCount.css';
 
-function ItemCount({stock}) {
+function ItemCount({stock, Add}) {
   const [cant, setCant] = useState(1)
   const [stockRemanente, setStockRemanente] = useState(stock)
 
@@ -23,6 +23,10 @@ function ItemCount({stock}) {
     sumaCant = () => setCant(stock)
   }
 
+  const agregarCarrito = () => {
+    Add(cant)
+  }
+
   return (
     <div className='container'>
       <div className='containerCant'>
@@ -38,6 +42,9 @@ function ItemCount({stock}) {
           </svg>
         </button>
       </div>
+      <button onClick={agregarCarrito} className='buttonAgregar'>
+        Agregar al carrito
+      </button>
     </div>
   )
 }
