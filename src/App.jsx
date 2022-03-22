@@ -6,24 +6,27 @@ import NavBar from './components/navBar/NavBar';
 import Cart from './components/Cart/Cart';
 
 import './App.css';
+import CartContextProvider from './context/cartContext';
 
 function App() {
   
   return (
+    <CartContextProvider>
       <BrowserRouter>
         <div className='body'>
-          <NavBar/>
+          <NavBar />
           <Routes>
-            <Route path='/' element={<ItemListContainer/>}/>
-            <Route path='/productos' element={<ItemListContainer/>}/>
-            <Route path='/productos/detalle/:detalleId' element={<ItemDetailContainer/>}/>
-            <Route path='/categoria/:categoriaId' element={<ItemListContainer/>}/>
-            <Route path='/categoria/:categoriaId/detalle/:detalleId' element={<ItemDetailContainer/>}/>
-            <Route path='/detalle/:detalleId' element={<ItemDetailContainer/>}/>
-            <Route path='/cart' element={<Cart/>}/>
+            <Route path='/' element={<ItemListContainer />} />
+            <Route path='/productos' element={<ItemListContainer />} />
+            <Route path='/productos/detalle/:detalleId' element={<ItemDetailContainer />} />
+            <Route path='/categoria/:categoriaId' element={<ItemListContainer />} />
+            <Route path='/categoria/:categoriaId/detalle/:detalleId' element={<ItemDetailContainer />} />
+            <Route path='/detalle/:detalleId' element={<ItemDetailContainer />} />
+            <Route path='/cart' element={<Cart />} />
           </Routes>
         </div>
       </BrowserRouter>
+    </CartContextProvider>
   );
 }
 

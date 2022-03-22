@@ -1,9 +1,13 @@
-import React from 'react'
+import { useCartContext } from "../../context/cartContext"
 
 function Cart() {
+  const { cartList } = useCartContext()
+
   return (
     <div>
-        <h2>CARRITO</h2>
+      
+      { cartList.map(prod => <li> {prod.nombre} {prod.precio} </li>) }
+
     </div>
   )
 }
