@@ -1,5 +1,4 @@
-import { createContext, useState, useContext } from "react";
-
+import { createContext, useState, useContext, useEffect } from "react";
 
 const CartContext = createContext([])
 
@@ -8,18 +7,18 @@ export const useCartContext = () => useContext(CartContext)
 function CartContextProvider({children}) {
     const [cartList, setCartList] = useState([])
 
-    const agregarCart = (Item) => {
-        
-        if (cartList.find(prod => prod.id === Item.id)) {
-            const itemCarrito = cartList.find(prod => prod.id === Item.id)
-            itemCarrito.cantidad += Item.cantidad
-            const nuevoCartList = cartList.filter(prod => prod.id !== Item.id)
-            setCartList([...nuevoCartList, itemCarrito])
-            return;
-        }
-        setCartList([...cartList, Item])
-        console.log(cartList)
+    const agregarCart = (item) => {
+        setCartList([...cartList, item])
     }
+
+    const isInCart = (id) => {
+        return cartList.some((prod) => prod.id === id)
+    }
+
+    useEffect(() => {
+        console.log(cartList)
+    }, [cartList])
+
 
     const vaciarCart=()=>{
         setCartList([])
@@ -28,9 +27,9 @@ function CartContextProvider({children}) {
 
     return (
         <CartContext.Provider value={{
-            cartList,
             agregarCart,
-            vaciarCart
+            vaciarCart,
+            isInCart
         }}> 
             {children}
         </CartContext.Provider>
