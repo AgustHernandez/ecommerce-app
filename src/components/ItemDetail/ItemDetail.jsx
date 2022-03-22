@@ -5,32 +5,29 @@ import { useCartContext } from "../../context/cartContext"
 
 import './styleItemDetail.css';
 
-function ItemDetail({id, nombre, precio, imagen, stock}) {
-  const [count, setCount] = useState(null)
+function ItemDetail({producto}) {
+  const [count, setCount] = useState(0)
 
   const { agregarCart, isInCart } = useCartContext()
 
-  const Add = () => {
-    /*setCount(cantidad)*/
-    const nuevoItem = {id, nombre, precio, imagen, stock, count}
-    agregarCart(nuevoItem)
-
-    /*agregarCart({...producto, cantidad: cantidad})*/
+  const Add = (cantidad) => {
+    setCount(cantidad)
+    agregarCart({...producto, cantidad: cantidad})
   }
 
   return (
     <div className='containerDetail'>
       <div>
-        <img src={imagen} alt={nombre} className="imagenProd"/>
+        <img src={producto.imagen} alt={producto.nombre} className="imagenProd"/>
       </div>
       <div className='detail'>
         <div>
-          <h2 className='tituloProd'>{nombre}</h2>
+          <h2 className='tituloProd'>{producto.nombre}</h2>
           <p className='parrafoProd'>Diseño personalizable</p>
         </div>
         <div>
           <div className='precioProducto'>
-            <p>$ {precio}</p>
+            <p>$ {producto.precio}</p>
           </div>
           <div className='divColor'>
             <label className='color'>Color:</label>
@@ -49,17 +46,7 @@ function ItemDetail({id, nombre, precio, imagen, stock}) {
               </Link>
             </div>
             :
-              <ItemCount count={count} modify={setCount} stock={stock} />
-            }
-            {
-              isInCart(id) ?
-              <h3>El producto ya se encuentra en el carrito</h3>
-              :
-              <div>
-                <button disabled={count===0} onClick={() => Add()} className='buttonAgregar'>
-                  Agregar al carrito
-                </button>
-              </div>
+              <ItemCount stock={producto.stock} Add={Add} />
             }
           </div>
         </div>
