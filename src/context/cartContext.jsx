@@ -14,7 +14,7 @@ function CartContextProvider({children}) {
             return;
         }
         let newItem = item;
-        let oldItem = cartList.filter((p)=> p.id === item.id)
+        let oldItem = cartList.filter((p)=> p.id === item.id)[0]
         newItem.cantidad = Math.min(newItem.cantidad + oldItem.cantidad, item.stock) ;
         let newCartList = cartList.filter((p)=> p.id !== item.id)
         setCartList([...newCartList, newItem]);
