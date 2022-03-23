@@ -1,12 +1,22 @@
 import { useCartContext } from "../../context/cartContext"
+import CartItem from "../cartItem/CartItem"
 
 function Cart() {
-  const { cartList } = useCartContext()
+  const { cartList, vaciarCart } = useCartContext()
+
+  const vaciarCarrito = () => {
+    vaciarCart()
+  }
 
   return (
     <div>
       
-      { cartList.map(prod => <li> {prod.nombre} {prod.precio} </li>) }
+      { cartList.map(producto => <CartItem key={producto.id} producto={producto} />) 
+      }
+
+      <button onClick={ () => vaciarCarrito() }>
+        Vaciar carrito
+      </button>
 
     </div>
   )
