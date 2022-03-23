@@ -6,13 +6,13 @@ import { useCartContext } from "../../context/cartContext"
 import './styleItemDetail.css';
 
 function ItemDetail({producto}) {
-  const [count, setCount] = useState(null)
+  const [agregado, estaAgregado] = useState(false)
 
   const { agregarCart } = useCartContext()
 
-  const onAdd = (cantidad) => {
-    setCount(cantidad)
+  const Add = (cantidad) => {
     agregarCart({...producto, cantidad: cantidad})
+    estaAgregado(true);
   }
 
   return (
@@ -35,7 +35,7 @@ function ItemDetail({producto}) {
             <button className='buttonColor2'/>
           </div>
           <div>
-            { count ?
+            { agregado ?
             <div>
               <h2>Se ha agregado el producto al carrito</h2>
               <Link to='/productos'>
@@ -46,7 +46,7 @@ function ItemDetail({producto}) {
               </Link>
             </div>
             :
-              <ItemCount stock={5} initial={1} onAdd={onAdd} />
+              <ItemCount stock={producto.stock} Add={Add} />
             }
           </div>
         </div>

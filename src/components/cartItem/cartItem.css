@@ -1,0 +1,51 @@
+.card {
+    width: 250px;
+    border: black 1px solid;
+    border-radius: 10px;
+    text-align: center;
+    margin: 25px 10px;
+}
+
+.title {
+    margin: 10px 0px;
+    height: 70px;
+}
+
+.nombreProd {
+    font-weight: 400;
+    font-size: 3rem;
+}
+
+.imgProd {
+    border-radius: 10px;
+    width: 230px;
+}
+
+.containerDescrip {
+    margin: 15px 0px;
+}
+
+.precioProd {
+    padding-bottom: 10px;
+    font-weight: 400;
+    font-size: 2.2rem;
+}
+
+.descripProd {
+    padding-bottom: 15px;
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+.buttonProd {
+    background-color: transparent;
+    border-color: #e5989b;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+    margin: 10px;
+}
+
+.buttonProd:hover {
+    background-color: #ffb4a2;
+}
