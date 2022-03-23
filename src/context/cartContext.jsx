@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, useEffect } from "react";
+import { createContext, useState, useContext } from "react";
 
 const CartContext = createContext([])
 
@@ -24,21 +24,20 @@ function CartContextProvider({children}) {
         return cartList.some((prod) => prod.id === id)
     }
 
-    useEffect(() => {
-        console.log(cartList)
-    }, [cartList])
-
-
-    const vaciarCart=()=>{
+    const vaciarCart = () => {
         setCartList([])
     }
 
+    const removerItem = (id) => {
+        setCartList(cartList.filter((p)=> p.id !== id))
+    }
 
     return (
         <CartContext.Provider value={{
+            cartList,
             agregarCart,
             vaciarCart,
-            isInCart
+            removerItem
         }}> 
             {children}
         </CartContext.Provider>
