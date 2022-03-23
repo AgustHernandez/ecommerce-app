@@ -15,7 +15,7 @@ function CartContextProvider({children}) {
         }
         let newItem = item;
         let oldItem = cartList.filter((p)=> p.id === item.id)
-        newItem.cantidad = Math.Max(newItem.cantidad + oldItem.cantidad, item.stock) ;
+        newItem.cantidad = Math.Min(newItem.cantidad + oldItem.cantidad, item.stock) ;
         let newCartList = cartList.filter((p)=> p.id !== item.id)
         setCartList([...newCartList, newItem]);
     }
