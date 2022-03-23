@@ -8,7 +8,15 @@ function CartContextProvider({children}) {
     const [cartList, setCartList] = useState([])
 
     const agregarCart = (item) => {
-        setCartList([...cartList, item])
+        if(!isInCart(item.id))
+        {
+            setCartList([...cartList, item]);
+            return;
+        }
+        let newItem = item;
+        newItem.cantidad = Math.Max(newItem.cantidad + item.cantidad, item.stock) ;
+        let newCartList = cartList.filter((p)=> p.id !== item.id)
+        setCartList([...newCartList, newItem]);
     }
 
     const isInCart = (id) => {
