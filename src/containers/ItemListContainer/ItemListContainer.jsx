@@ -1,9 +1,12 @@
+import './styleItemListContainer.css';
+
 import { useEffect, useState } from 'react'
+
+import HeroSection from '../../components/heroSection/HeroSection';
+import ItemList from '../../components/ItemList/ItemList';
+import MsjBienvenida from '../../components/msjBienvenida/MsjBienvenida';
 import { getFetch } from '../../helpers/getFetch'
 import { useParams } from 'react-router-dom';
-import ItemList from '../../components/ItemList/ItemList';
-
-import './styleItemListContainer.css';
 
 function ItemListContainer() {
   const [productos, setProductos] = useState([])
@@ -31,13 +34,15 @@ function ItemListContainer() {
     }, [categoriaId])
 
   return (
-    <div className='containerItems'>
-      <h2 className='tituloProd'>PRODUCTOS</h2>
-      { loading ? <h2 className='loading'>Cargando...</h2>
-        :
-        <ItemList productos={productos} />
-      }
-    </div>
+    <>
+      <HeroSection MsjBienvenida={MsjBienvenida} />
+      <div className='containerItems'>
+        <h2 className='tituloProd'>PRODUCTOS</h2>
+        {loading ? <h2 className='loading'>Cargando...</h2>
+          :
+          <ItemList productos={productos} />}
+      </div>
+    </>
   )
 }
 

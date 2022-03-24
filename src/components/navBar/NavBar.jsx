@@ -2,8 +2,6 @@ import './styleNavBar.css';
 
 import Cart from '../Cart/Cart';
 import CartWidget from '../cartWidget/CartWidget';
-import HeroSection from '../heroSection/HeroSection';
-import MsjBienvenida from '../msjBienvenida/MsjBienvenida';
 import { NavLink } from 'react-router-dom';
 import React from 'react'
 
@@ -24,10 +22,6 @@ const NavBar = () => {
                 </div>
                 <NavLink to="/cart" element={<Cart/>} className="carrito" > <CartWidget/> </NavLink>
             </nav>
-            {
-                
-            }
-            <HeroSection MsjBienvenida={MsjBienvenida}/>
         </header>
     );
 }
