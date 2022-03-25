@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
 import './styleItemCount.css';
+
+import React, { useState } from 'react'
 
 function ItemCount({stock, Add}) {
   const [cant, setCant] = useState(1)

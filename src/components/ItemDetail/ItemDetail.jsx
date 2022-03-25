@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom';
-import ItemCount from '../ItemCount/ItemCount';
-import { useCartContext } from "../../context/cartContext"
-
 import './styleItemDetail.css';
+
+import ItemCount from '../ItemCount/ItemCount';
+import { Link } from 'react-router-dom';
+import { useCartContext } from "../../context/cartContext"
+import { useState } from 'react'
 
 function ItemDetail({producto}) {
   const [agregado, estaAgregado] = useState(false)
