@@ -42,7 +42,7 @@ function ItemDetail({producto}) {
                 <button>Seguir comprando</button>
               </Link>
               <Link to='/cart'>
-                <h3>Ver carrito</h3>
+                <h3>Terminar compra</h3>
               </Link>
             </div>
             :
