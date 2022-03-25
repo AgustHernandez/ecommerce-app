@@ -1,22 +1,23 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
 import './styleItem.css';
+
+import { Link } from 'react-router-dom';
+import React from 'react'
 
 function Item({prod}) {
 
   return (
-    <div key={prod.id} className='card' >
-        <div className='title'>
-          <h2 className='nombreProd'>{prod.nombre}</h2>
+    <div key={prod.id} className='cardItem'>
+        <div className='titleItem'>
+          <h2 className='nombreProdItem'>{prod.nombre}</h2>
         </div>
         <div>
-          <img src={prod.imagen} alt={prod.nombre} className='imgProd'/>
+          <img src={prod.imagen} alt={prod.nombre} className='imgProdItem'/>
         </div>
-        <div className='containerDescrip'>
-          <p className='descripProd'>{prod.description}</p>
-          <p className='precioProd'>$ {prod.precio}</p>
+        <div className='containerDescripItem'>
+          <p className='descripProdItem'>{prod.description}</p>
+          <p className='precioProdItem'>$ {prod.precio}</p>
           <Link to={`detalle/${prod.id}`}>
-            <button className='buttonProd'> Ver descripción </button>
+            <button className='buttonProdItem'> Ver descripción </button>
           </Link>
         </div>
     </div>

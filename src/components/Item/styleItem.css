@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,600;1,300;1,400&display=swap');
 
-.card {
+.cardItem {
     width: 250px;
     border: black 1px solid;
     border-radius: 10px;
@@ -8,38 +8,38 @@
     margin: 25px 10px;
 }
 
-.title {
+.titleItem {
     margin: 10px 0px;
     height: 70px;
 }
 
-.nombreProd {
+.nombreProdItem {
     font-weight: 400;
     font-size: 3rem;
 }
 
-.imgProd {
+.imgProdItem {
     border-radius: 10px;
     width: 230px;
 }
 
-.containerDescrip {
+.containerDescripItem {
     margin: 15px 0px;
 }
 
-.precioProd {
+.precioProdItem {
     padding-bottom: 10px;
     font-weight: 400;
     font-size: 2.2rem;
 }
 
-.descripProd {
+.descripProdItem {
     padding-bottom: 15px;
     font-weight: 400;
     font-size: 2rem;
 }
 
-.buttonProd {
+.buttonProdItem {
     background-color: transparent;
     border-color: #e5989b;
     border-radius: 5px;
@@ -48,6 +48,6 @@
     margin: 10px;
 }
 
-.buttonProd:hover {
+.buttonProdItem:hover {
     background-color: #ffb4a2;
 }

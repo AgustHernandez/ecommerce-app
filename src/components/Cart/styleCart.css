@@ -1,0 +1,79 @@
+.cart {
+    position: relative;
+}
+
+.titleCart {
+    font-size: 4rem;
+    margin: 30px 0px;
+    text-align: center;
+}
+
+.textCartVacio {
+    font-size: 3rem;
+    font-weight: 200;
+    margin: 30px 0px;
+    text-align: center;
+}
+
+.divBotonLink {
+    text-align: center;
+    padding: 20px 0px;
+}
+
+.botonLink {
+    text-align: center;
+    background-color: transparent;
+    border-color: #e5989b;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.resumenCompra {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 300px;
+    height: 250px;
+    position: absolute;
+    top: 10%;
+    left: 75%;
+}
+
+.divTotal {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.titleTotal {
+    font-size: 3rem;
+    margin: 30px 0px;
+    text-align: center;
+}
+
+.totalCart {
+    font-size: 3rem;
+    margin: 30px 0px;
+    text-align: center;
+}
+
+.divBotonTotal {
+    text-align: center;
+    padding: 20px 0px;
+}
+
+.botonVaciarCart {
+    background-color: transparent;
+    border-color: #e5989b;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.botonVaciarCart:hover {
+    background-color: #ffb4a2;
+}

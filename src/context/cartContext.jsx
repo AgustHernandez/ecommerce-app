@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 const CartContext = createContext([])
 
@@ -17,12 +17,13 @@ function CartContextProvider({children}) {
         let oldItem = cartList.filter((p)=> p.id === item.id)[0]
         newItem.cantidad = Math.min(newItem.cantidad + oldItem.cantidad, item.stock) ;
         let newCartList = cartList.filter((p)=> p.id !== item.id)
-        setCartList([...newCartList, newItem]);
+        setCartList([...newCartList, newItem])
     }
 
     const isInCart = (id) => {
         return cartList.some((prod) => prod.id === id)
     }
+
 
     const vaciarCart = () => {
         setCartList([])
@@ -37,7 +38,7 @@ function CartContextProvider({children}) {
             cartList,
             agregarCart,
             vaciarCart,
-            removerItem
+            removerItem,
         }}> 
             {children}
         </CartContext.Provider>
