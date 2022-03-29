@@ -1,11 +1,11 @@
 import './styleItemListContainer.css';
 
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 
 import HeroSection from '../../components/heroSection/HeroSection';
 import ItemList from '../../components/ItemList/ItemList';
 import MsjBienvenida from '../../components/msjBienvenida/MsjBienvenida';
-import { getFetch } from '../../helpers/getFetch'
 import { useParams } from 'react-router-dom';
 
 function ItemListContainer() {
@@ -14,24 +14,31 @@ function ItemListContainer() {
   const { categoriaId } = useParams()
 
     useEffect(() => {
+      const db = getFirestore()
+      const queryCollection = collection(db, 'productos')
       if (categoriaId) {
-        getFetch
-        .then((respuesta) => {
-            return respuesta
-        })
-        .then((resp) => setProductos(resp.filter(prod => prod.categoria === categoriaId) ))
+        const queryFilter = query( queryCollection, where( 'categoria', '==', categoriaId ))
+        getDocs(queryFilter)
+        .then(resp => setProductos( resp.docs.map(product => ( {id: product.id, ...product.data()} ) ) ))
         .then(err => console.log(err))
         .finally(() => setLoading(false))
       } else {
-        getFetch
-        .then((respuesta) => {
-          return respuesta
-        })
-        .then((resp) => setProductos(resp))
+        getDocs(queryCollection)
+        .then(resp => setProductos( resp.docs.map(product => ( {id: product.id, ...product.data()} ) ) ))
         .catch(err => console.log(err))
         .finally(() => setLoading(false))
       }
     }, [categoriaId])
+
+    /*useEffect(() => {
+      const db = getFirestore()
+      const queryCollection = collection(db, 'productos')
+      getDocs(queryCollection)
+      .then(resp => setProductos( resp.docs.map(product => ( {id: product.id, ...product.data()} ) ) ))
+      .catch(err => console.log(err))
+      .finally(() => setLoading(false))
+    }, [])*/
+
 
   return (
     <>
