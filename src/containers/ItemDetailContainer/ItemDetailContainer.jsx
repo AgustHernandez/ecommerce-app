@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import { getFetch } from '../../helpers/getFetch';
-import ItemDetail from '../../components/ItemDetail/ItemDetail';
-
 import './styleItemDetailContainer.css';
+
+import { doc, getDoc, getFirestore } from 'firebase/firestore'
+import { useEffect, useState } from 'react'
+
+import ItemDetail from '../../components/ItemDetail/ItemDetail';
+import { useParams } from 'react-router-dom';
 
 function ItemDetailContainer() {
     // llamada a api
@@ -11,12 +12,21 @@ function ItemDetailContainer() {
   const {detalleId} = useParams()
   const [loading, setLoading] = useState(true)
 
-  
   useEffect(() => {
-        getFetch
-        .then(resp => setProducto(resp.find(prod => prod.id === detalleId)))
-        .finally(() => setLoading(false))
-    }, [detalleId])
+    const db = getFirestore()
+    const queryDb = doc(db, 'productos', detalleId)
+    getDoc(queryDb)
+    .then(resp => setProducto({ id: resp.id, ...resp.data() }))
+    .finally(() => setLoading(false))
+}, [detalleId])
+
+  /*useEffect(() => {
+    const db = getFirestore()
+    const queryDb = doc(db, 'productos', detalleId)
+    getDoc(queryDb)
+    .then(resp => setProducto({ id: resp.id, ...resp.data() }))
+    .finally(() => setLoading(false))
+  })*/
 
   return (
     <>
