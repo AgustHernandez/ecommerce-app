@@ -1,6 +1,7 @@
 import './styleCart.css';
 
 import CartItem from "../cartItem/CartItem"
+import FormCarrito from '../FormCarrito/FormCarrito';
 import { Link } from 'react-router-dom';
 import { useCartContext } from "../../context/cartContext"
 
@@ -45,6 +46,7 @@ function Cart() {
           </div>
         </div>
       }
+      <FormCarrito/>
     </div>
   )
 }
