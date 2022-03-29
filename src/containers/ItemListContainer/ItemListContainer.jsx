@@ -30,15 +30,6 @@ function ItemListContainer() {
       }
     }, [categoriaId])
 
-    /*useEffect(() => {
-      const db = getFirestore()
-      const queryCollection = collection(db, 'productos')
-      getDocs(queryCollection)
-      .then(resp => setProductos( resp.docs.map(product => ( {id: product.id, ...product.data()} ) ) ))
-      .catch(err => console.log(err))
-      .finally(() => setLoading(false))
-    }, [])*/
-
 
   return (
     <>
