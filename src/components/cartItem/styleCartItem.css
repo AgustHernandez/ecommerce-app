@@ -1,39 +1,30 @@
 .card {
     display: flex;
-    width: 1000px;
+    width: 500px;
+    height: auto;
     text-align: center;
-    margin: 25px 10px;
+    margin: 25px 30px;
 }
 
 .imgProd {
     border-radius: 10px;
-    width: 130px;
+    width: 100px;
 }
 
 .containerDescrip {
     display: flex;
-    gap: 30px;
+    flex-direction: column;
+    gap: 10px;
     justify-content: center;
     align-items: center;
-    padding: 5px 25px;
+    padding: 5px 20px 5px 25px;
 }
 
-.nombreProd {
+.infoProd {
     font-weight: 400;
-    font-size: 2.5rem;
-    width: 150px;
-}
-
-.precioProd {
-    font-weight: 400;
-    font-size: 2rem;
-    width: 200px;
-}
-
-.descripProd {
-    font-weight: 400;
-    font-size: 1.8rem;
-    width: 150px;
+    font-size: 1.5rem;
+    width: auto;
+    text-align: left;
 }
 
 .buttonProd {

@@ -43,10 +43,19 @@ function Cart() {
             <button onClick={ () => vaciarCarrito() } className="botonVaciarCart">
               Vaciar carrito
             </button>
+            <button onClick={ () => vaciarCarrito() } className="botonVaciarCart">
+              Terminar compra
+            </button>
           </div>
         </div>
       }
-      <FormCarrito/>
+
+      {
+        cartList.length !== 0 &&
+        <div>
+          <FormCarrito/>
+        </div>
+      }
     </div>
   )
 }
