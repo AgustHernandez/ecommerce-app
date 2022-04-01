@@ -60,7 +60,14 @@ function Cart() {
     <div className="cart">
       <h2 className="titleCart">CARRITO DE COMPRAS</h2>
       {
-        cartList.length === 0 && 
+        id !== ''  &&
+        <div className='textoGracias'>
+          <h3 className='gracias'>Gracias por tu compra !</h3>
+          <p className='orden'> Tu orden es: <b>{id}</b> </p>
+        </div>
+      }
+      {
+        (cartList.length === 0 && id === '' ) &&
         <div>
           <h2 className="textCartVacio"> El carrito está vacio</h2>
           <div className='divBotonLink'>
@@ -71,12 +78,15 @@ function Cart() {
         </div> 
       }
 
-      { cartList.map(producto => <CartItem key={producto.id} producto={producto} />) 
+      { 
+        (cartList.length !== 0 && id === '' ) &&
+          
+        cartList.map(producto => <CartItem key={producto.id} producto={producto} />) 
 
       }
 
       {
-        cartList.length !== 0 && 
+        (cartList.length !== 0 && id === '' ) &&
         <div className='resumenCompra'>
           <div className='divTotal'>
             <h3 className='titleTotal'>Total:</h3>
@@ -91,7 +101,7 @@ function Cart() {
       }
 
       {
-        cartList.length !== 0 &&
+        (cartList.length !== 0 && id === '' ) &&
         <div className='formCart'>
           <h3 className='tituloForm'>DATOS DE CONTACTO</h3>
           <form onSubmit={generarOrden}>
@@ -120,13 +130,6 @@ function Cart() {
                 Terminar compra
               </button>
           </form>
-        </div>
-      }
-      {
-        id !== '' &&
-        <div>
-          <h3>Gracias por tu compra !</h3>
-          <p> `Tu orden es: ${id}` </p>
         </div>
       }
     </div>
