@@ -10,7 +10,6 @@ import { useState } from 'react';
 function Cart() {
   const [dataForm, setDataForm] = useState( {nombre: '',provincia: '', codigoPostal: '', email: ''})
   const [id, setId] = useState('')
-  const [compra, setCompra] = useState(false)
   const { cartList, vaciarCart, precioTotal } = useCartContext()
 
   const generarOrden = async (e) => {
@@ -34,7 +33,6 @@ function Cart() {
     addDoc(queryCollection, orden)
     .then(resp => setId(resp.id))
     .catch(err => console.log(err))
-    .finally(() => console.log('Finalizo la compra'))
 
     const queryUpdate = collection(db, 'productos')
     const queryActualizarStock = query(
@@ -47,7 +45,6 @@ function Cart() {
     .then(resp => resp.docs.forEach(res => batch.update(res.ref, {stock: res.data().stock - cartList.find(prod => prod.id === res.id).cantidad}) ))
     batch.commit()
     .catch(err => console.log(err))
-    .finally(() => setLoading(false))
   }
 
   const guardarForm = (e) => {
@@ -56,6 +53,8 @@ function Cart() {
         [e.target.name]: e.target.value
     })
   }
+
+  console.log(id)
 
   return (
     <div className="cart">
@@ -124,7 +123,11 @@ function Cart() {
         </div>
       }
       {
-        
+        id !== '' &&
+        <div>
+          <h3>Gracias por tu compra !</h3>
+          <p> `Tu orden es: ${id}` </p>
+        </div>
       }
     </div>
   )
