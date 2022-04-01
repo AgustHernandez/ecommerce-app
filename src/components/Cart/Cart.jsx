@@ -107,6 +107,9 @@ function Cart() {
                   <label htmlFor="ofertas" className='labelCheck'> Quiero recibir ofertas y novedades por email </label>
               </div>
               <div className='divForm'>
+                  <input type="text" name='nombre' placeholder='Nombre y Apellido' value={dataForm.nombre} onChange={guardarForm} className='formEmail' />
+              </div>
+              <div className='divForm'>
                   <label htmlFor="provincia" className='labelProv'> Provincia </label>
                   <select name='provincia' value={dataForm.provincia} onChange={guardarForm} className='selectProv'>
                       <option value="Elegir"> Elegir una opción </option>
@@ -115,7 +118,7 @@ function Cart() {
                   </select>
               </div>
               <div className='divForm'>
-                  <input type="number" name='Codigo Postal' placeholder='Codigo Postal' value={dataForm.codigoPostal} onChange={guardarForm} className='inputCodPostal' />
+                  <input type="number" name='codigoPostal' placeholder='Codigo Postal' value={dataForm.codigoPostal} onChange={guardarForm} className='inputCodPostal' />
               </div>
           </form>
         </div>
