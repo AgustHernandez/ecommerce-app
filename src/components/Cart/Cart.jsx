@@ -9,12 +9,15 @@ import { useState } from 'react';
 
 function Cart() {
   const [dataForm, setDataForm] = useState( {nombre: '',provincia: '', codigoPostal: '', email: ''})
+  const [id, setId] = useState('')
+  const [compra, setCompra] = useState(false)
   const { cartList, vaciarCart, precioTotal } = useCartContext()
 
-  const generarOrden = async () => {
+  const generarOrden = async (e) => {
+    e.preventDefault()
     let orden = {}
 
-    orden.buyer = {nombre: dataForm.nombre, provincia: dataForm.provincia, codigoPostal: dataForm.codigoPostal, email: dataForm.email}
+    orden.buyer = dataForm
     orden.total = precioTotal()
 
     orden.item = cartList.map(cartItem => {
@@ -29,7 +32,7 @@ function Cart() {
     const db = getFirestore()
     const queryCollection = collection(db, 'ordenes')
     addDoc(queryCollection, orden)
-    .then(resp => console.log(resp))
+    .then(resp => setId(resp.id))
     .catch(err => console.log(err))
     .finally(() => console.log('Finalizo la compra'))
 
@@ -44,7 +47,7 @@ function Cart() {
     .then(resp => resp.docs.forEach(res => batch.update(res.ref, {stock: res.data().stock - cartList.find(prod => prod.id === res.id).cantidad}) ))
     batch.commit()
     .catch(err => console.log(err))
-    .finally(() => console.log('Finalizo la compra'))
+    .finally(() => setLoading(false))
   }
 
   const guardarForm = (e) => {
@@ -54,12 +57,9 @@ function Cart() {
     })
   }
 
-  console.log(dataForm)
-
   return (
     <div className="cart">
       <h2 className="titleCart">CARRITO DE COMPRAS</h2>
-      
       {
         cartList.length === 0 && 
         <div>
@@ -86,9 +86,6 @@ function Cart() {
           <div className='divBotonTotal'>
             <button onClick={vaciarCart} className="botonVaciarCart">
               Vaciar carrito
-            </button>
-            <button onClick={generarOrden} className="botonVaciarCart">
-              Terminar compra
             </button>
           </div>
         </div>
@@ -120,8 +117,14 @@ function Cart() {
               <div className='divForm'>
                   <input type="number" name='codigoPostal' placeholder='Codigo Postal' value={dataForm.codigoPostal} onChange={guardarForm} className='inputCodPostal' />
               </div>
+              <button onClick={generarOrden} className="botonVaciarCart">
+                Terminar compra
+              </button>
           </form>
         </div>
+      }
+      {
+        
       }
     </div>
   )
