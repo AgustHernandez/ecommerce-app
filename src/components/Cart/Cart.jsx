@@ -1,8 +1,8 @@
 import './styleCart.css';
 
 import { addDoc, collection, documentId, getDocs, getFirestore, query, where, writeBatch } from 'firebase/firestore';
-
 import CartItem from "../cartItem/CartItem"
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { Link } from 'react-router-dom';
 import Pago from '../Pago/Pago';
 import { useCartContext } from "../../context/cartContext"
@@ -35,7 +35,7 @@ function Cart() {
 
     const db = getFirestore()
     const queryCollection = collection(db, 'ordenes')
-    addDoc(queryCollection, orden)
+    await addDoc(queryCollection, orden)
     .then(resp => setId(resp.id))
     .catch(err => console.log(err))
 
@@ -50,8 +50,9 @@ function Cart() {
     .then(resp => resp.docs.forEach(res => batch.update(res.ref, {stock: res.data().stock - cartList.find(prod => prod.id === res.id).cantidad}) ))
     batch.commit()
     .then(vaciarCart())
-    .then(setProcesandoPago(false))
     .catch(err => console.log(err))
+
+    setProcesandoPago(false)
   }
 
   const guardarForm = (e) => {
@@ -82,7 +83,10 @@ function Cart() {
     <div className="cart">
       <h2 className="titleCart">CARRITO DE COMPRAS</h2>
       {(procesandoPago) &&
-        <h3 className="titleCart">CARRITO DE COMPRAS</h3>
+        <div>
+          <h4 className="titleCart">Tu pago se está procesando</h4>
+          <LoadingSpinner />
+        </div>
       }
       {
         (id !== '' && !procesandoPago)  && 
