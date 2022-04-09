@@ -67,7 +67,7 @@ function Cart() {
   }
 
   const terminarCompra = () => {
-    if(dataEmail.email != '')
+    if(dataEmail.email !== '')
     {
       setEmailGuardado(true)
     }
@@ -163,6 +163,11 @@ function Cart() {
                       <label htmlFor="envio" className='labelCheck'> Envío 72hs. hábiles </label>
                   </div>
               </div>
+              <Link to='/cart/pago'>
+                <button onClick={terminarCompra} className="botonVaciarCart">
+                    Terminar compra
+                </button>
+              </Link>
             </div>
         }
     </div>
