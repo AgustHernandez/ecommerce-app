@@ -47,8 +47,20 @@ function ItemDetail({producto}) {
             </div>
             :
               <div>
-                <label className='color'>Disponibles: {producto.stock}</label>
-                <ItemCount stock={producto.stock} Add={Add} />
+                {(producto.stock > 0) ?
+                    <div>
+                      <label className='textoDisponibles'>Disponibles: {producto.stock}</label>
+                      <ItemCount stock={producto.stock} Add={Add} />
+                    </div>
+                    :
+                    <div>
+                      <label className='textoSinStock'>Producto sin stock por el momento</label>
+                      <br></br>
+                      <Link to='/productos'>
+                        <button>Seguir comprando</button>
+                      </Link>
+                      </div>
+                }
               </div>
             }
           </div>

@@ -44,6 +44,18 @@
     font-size: 2.2rem;
 }
 
+.textoDisponibles {
+    font-size: 1.5rem;
+    font-style: oblique;
+}
+
+.textoSinStock
+{
+    font-size: 1.5rem;
+    font-style: oblique;
+    color: red;
+}
+
 .buttonColor1 {
     width: 20px;
     height: 20px;
