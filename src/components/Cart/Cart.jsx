@@ -145,6 +145,8 @@ function Cart() {
               </button>
             </div>
             :
+            <div>
+            {cartList.length > 0 && 
             <div className='formCart'>
               <h3 className='tituloForm'>DATOS DE CONTACTO</h3>
               <form>
@@ -168,6 +170,7 @@ function Cart() {
                     Terminar compra
                 </button>
               </Link>
+            </div>}
             </div>
         }
     </div>
