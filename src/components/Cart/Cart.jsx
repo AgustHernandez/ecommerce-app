@@ -90,7 +90,7 @@ function Cart() {
       }
 
       { 
-        (cartList.length !== 0 && ( id === '' ||  emailGuardado === true) ) &&
+        (cartList.length !== 0 && id === '' ) &&
           
         cartList.map(producto => <CartItem key={producto.id} producto={producto} />) 
 
@@ -110,62 +110,54 @@ function Cart() {
           </div>
         </div>
       }
-
-      {
-        (cartList.length !== 0 && id === '' ) &&
-        <div className='formCart'>
-          <h3 className='tituloForm'>DATOS DE CONTACTO</h3>
-          <form>
-              <div className='divForm'>
-                  <input type="email" name='email' placeholder='Email' value={dataEmail.email} onChange={guardarEmail} className='formEmail' />
-              </div>
-              <div className='divForm'>
-                  <input type="checkbox" name="ofertas" id="ofertas" className='inputCheck' />
-                  <label htmlFor="ofertas" className='labelCheck'> Quiero recibir ofertas y novedades por email </label>
-              </div>
-          </form>
-          <div>
-              <h3>Envío a domicilio</h3>
+        {
+          (cartList.length !== 0 && emailGuardado) ?
+            <div>
+              <form onSubmit={generarOrden}>
+                <div className='divForm'>
+                  <input type="email" name='email' placeholder='Email' value={dataEmail.email} onChange={guardarForm} className='formEmail' />
+                </div>
+                <div className='divForm'>
+                  <input type="text" name='nombre' placeholder='Nombre y Apellido' value={dataForm.nombre} onChange={guardarForm} className='formEmail' />
+                </div>
+                <div className='divForm'>
+                    <label htmlFor="provincia" className='labelProv'> Provincia </label>
+                    <select name='provincia' value={dataForm.provincia} onChange={guardarForm} className='selectProv'>
+                      <option value="Elegir"> Elegir una opción </option>
+                      <option value="CABA"> CABA </option>
+                      <option value="Buenos Aires"> Buenos Aires </option>
+                    </select>
+                </div>
+                <div className='divForm'>
+                    <input type="number" name='codigoPostal' placeholder='Codigo Postal' value={dataForm.codigoPostal} onChange={guardarForm} className='inputCodPostal' />
+                </div>
+              </form>
+              <Pago/>
+              <button onClick={generarOrden} className="botonVaciarCart">
+                Pagar
+              </button>
+            </div>
+            :
+            <div className='formCart'>
+              <h3 className='tituloForm'>DATOS DE CONTACTO</h3>
+              <form>
+                  <div className='divForm'>
+                      <input type="email" name='email' placeholder='Email' value={dataEmail.email} onChange={guardarEmail} className='formEmail' />
+                  </div>
+                  <div className='divForm'>
+                      <input type="checkbox" name="ofertas" id="ofertas" className='inputCheck' />
+                      <label htmlFor="ofertas" className='labelCheck'> Quiero recibir ofertas y novedades por email </label>
+                  </div>
+              </form>
               <div>
-                  <input type="radio" checked name="envio" id="envio" className='inputCheck' />
-                  <label htmlFor="envio" className='labelCheck'> Envío 72hs. hábiles </label>
+                  <h3>Envío a domicilio</h3>
+                  <div>
+                      <input type="radio" checked name="envio" id="envio" className='inputCheck' />
+                      <label htmlFor="envio" className='labelCheck'> Envío 72hs. hábiles </label>
+                  </div>
               </div>
-          </div>
-          <Link to='/cart/pago'>
-            <button className="botonVaciarCart">
-                Terminar compra
-            </button>
-          </Link>
-        </div>
-      }
-      {
-        (cartList.length !== 0 && emailGuardado === true ) &&
-        <div>
-          <form onSubmit={generarOrden}>
-            <div className='divForm'>
-              <input type="email" name='email' placeholder='Email' value={dataEmail.email} onChange={guardarForm} className='formEmail' />
             </div>
-            <div className='divForm'>
-              <input type="text" name='nombre' placeholder='Nombre y Apellido' value={dataForm.nombre} onChange={guardarForm} className='formEmail' />
-            </div>
-            <div className='divForm'>
-                <label htmlFor="provincia" className='labelProv'> Provincia </label>
-                <select name='provincia' value={dataForm.provincia} onChange={guardarForm} className='selectProv'>
-                  <option value="Elegir"> Elegir una opción </option>
-                  <option value="CABA"> CABA </option>
-                  <option value="Buenos Aires"> Buenos Aires </option>
-                </select>
-            </div>
-            <div className='divForm'>
-                <input type="number" name='codigoPostal' placeholder='Codigo Postal' value={dataForm.codigoPostal} onChange={guardarForm} className='inputCodPostal' />
-            </div>
-          </form>
-          <Pago/>
-          <button onClick={generarOrden} className="botonVaciarCart">
-            Pagar
-          </button>
-        </div>
-      }
+        }
     </div>
   )
 }
@@ -186,3 +178,59 @@ export default Cart
 <div className='divForm'>
     <input type="number" name='codigoPostal' placeholder='Codigo Postal' value={dataForm.codigoPostal} onChange={guardarForm} className='inputCodPostal' />
 </div>*/
+
+/*{
+  (cartList.length !== 0 && id === '' ) &&
+  <div className='formCart'>
+    <h3 className='tituloForm'>DATOS DE CONTACTO</h3>
+    <form>
+        <div className='divForm'>
+            <input type="email" name='email' placeholder='Email' value={dataEmail.email} onChange={guardarEmail} className='formEmail' />
+        </div>
+        <div className='divForm'>
+            <input type="checkbox" name="ofertas" id="ofertas" className='inputCheck' />
+            <label htmlFor="ofertas" className='labelCheck'> Quiero recibir ofertas y novedades por email </label>
+        </div>
+    </form>
+    <div>
+        <h3>Envío a domicilio</h3>
+        <div>
+            <input type="radio" checked name="envio" id="envio" className='inputCheck' />
+            <label htmlFor="envio" className='labelCheck'> Envío 72hs. hábiles </label>
+        </div>
+    </div>
+    <Link to='/cart/pago'>
+      <button className="botonVaciarCart">
+          Terminar compra
+      </button>
+    </Link>
+  </div>
+}
+{
+  (cartList.length !== 0 && emailGuardado === true ) &&
+  <div>
+    <form onSubmit={generarOrden}>
+      <div className='divForm'>
+        <input type="email" name='email' placeholder='Email' value={dataEmail.email} onChange={guardarForm} className='formEmail' />
+      </div>
+      <div className='divForm'>
+        <input type="text" name='nombre' placeholder='Nombre y Apellido' value={dataForm.nombre} onChange={guardarForm} className='formEmail' />
+      </div>
+      <div className='divForm'>
+          <label htmlFor="provincia" className='labelProv'> Provincia </label>
+          <select name='provincia' value={dataForm.provincia} onChange={guardarForm} className='selectProv'>
+            <option value="Elegir"> Elegir una opción </option>
+            <option value="CABA"> CABA </option>
+            <option value="Buenos Aires"> Buenos Aires </option>
+          </select>
+      </div>
+      <div className='divForm'>
+          <input type="number" name='codigoPostal' placeholder='Codigo Postal' value={dataForm.codigoPostal} onChange={guardarForm} className='inputCodPostal' />
+      </div>
+    </form>
+    <Pago/>
+    <button onClick={generarOrden} className="botonVaciarCart">
+      Pagar
+    </button>
+  </div>
+}*/
