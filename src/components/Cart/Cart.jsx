@@ -12,11 +12,13 @@ function Cart() {
   const [dataForm, setDataForm] = useState( {nombre: '',provincia: '', codigoPostal: '', email: ''})
   const [dataEmail, setDataEmail] = useState( {email: ''})
   const [emailGuardado, setEmailGuardado] = useState(false)
+  const [procesandoPago, setProcesandoPago] = useState(false)
   const [id, setId] = useState('')
   const { cartList, vaciarCart, precioTotal } = useCartContext()
   
   const generarOrden = async (e) => {
     e.preventDefault()
+    setProcesandoPago(true)
     let orden = {}
 
     orden.buyer = dataForm
@@ -48,6 +50,7 @@ function Cart() {
     .then(resp => resp.docs.forEach(res => batch.update(res.ref, {stock: res.data().stock - cartList.find(prod => prod.id === res.id).cantidad}) ))
     batch.commit()
     .then(vaciarCart())
+    .then(setProcesandoPago(false))
     .catch(err => console.log(err))
   }
 
@@ -78,8 +81,11 @@ function Cart() {
   return (
     <div className="cart">
       <h2 className="titleCart">CARRITO DE COMPRAS</h2>
+      {(procesandoPago) &&
+        <h3 className="titleCart">CARRITO DE COMPRAS</h3>
+      }
       {
-        id !== ''  && 
+        (id !== '' && !procesandoPago)  && 
         <div className='textoGracias'>
           <h3 className='gracias'>Gracias por tu compra !</h3>
           <p className='orden'> Tu orden es: <b>{id}</b> </p>
@@ -91,7 +97,7 @@ function Cart() {
         </div>
       }
       {
-        (cartList.length === 0 && id === '' ) &&
+        (cartList.length === 0 && id === '' && !procesandoPago) &&
         <div>
           <h2 className="textCartVacio"> El carrito está vacio</h2>
           <div className='divBotonLink'>
@@ -103,14 +109,14 @@ function Cart() {
       }
 
       { 
-        (cartList.length !== 0 && id === '' ) &&
+        (cartList.length !== 0 && id === '' && !procesandoPago) &&
           
         cartList.map(producto => <CartItem key={producto.id} producto={producto} />) 
 
       }
 
       {
-        (cartList.length !== 0 && id === '' ) &&
+        (cartList.length !== 0 && id === '' && !procesandoPago) &&
         <div className='resumenCompra'>
           <div className='divTotal'>
             <h3 className='titleTotal'>Total:</h3>
@@ -124,7 +130,7 @@ function Cart() {
         </div>
       }
         {
-          (cartList.length !== 0 && emailGuardado) ?
+          (cartList.length !== 0 && emailGuardado && !procesandoPago) ?
             <div>
               <form onSubmit={generarOrden}>
                 <div className='divForm'>
@@ -152,7 +158,7 @@ function Cart() {
             </div>
             :
             <div>
-            {cartList.length > 0 && 
+            {(cartList.length && !procesandoPago) > 0 && 
             <div className='formCart'>
               <h3 className='tituloForm'>DATOS DE CONTACTO</h3>
               <form>
