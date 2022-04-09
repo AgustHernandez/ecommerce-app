@@ -63,7 +63,14 @@ function Cart() {
         ...dataEmail,
         [e.target.name]: e.target.value
     })
-    setEmailGuardado(true)
+    
+  }
+
+  const terminarCompra = () => {
+    if(dataEmail.email != '')
+    {
+      setEmailGuardado(true)
+    }
   }
 
 
