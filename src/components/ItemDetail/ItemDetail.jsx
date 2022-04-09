@@ -46,7 +46,10 @@ function ItemDetail({producto}) {
               </Link>
             </div>
             :
-              <ItemCount stock={producto.stock} Add={Add} />
+              <div>
+                <label className='color'>Disponibles: {producto.stock}</label>
+                <ItemCount stock={producto.stock} Add={Add} />
+              </div>
             }
           </div>
         </div>

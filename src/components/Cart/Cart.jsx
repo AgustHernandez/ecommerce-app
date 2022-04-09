@@ -47,6 +47,7 @@ function Cart() {
     await getDocs(queryActualizarStock)
     .then(resp => resp.docs.forEach(res => batch.update(res.ref, {stock: res.data().stock - cartList.find(prod => prod.id === res.id).cantidad}) ))
     batch.commit()
+    .then(vaciarCart())
     .catch(err => console.log(err))
   }
 
@@ -82,6 +83,11 @@ function Cart() {
         <div className='textoGracias'>
           <h3 className='gracias'>Gracias por tu compra !</h3>
           <p className='orden'> Tu orden es: <b>{id}</b> </p>
+          <div className='divBotonLink'>
+            <Link to='/productos'>
+              <button className="botonLink">Volver a productos!</button>
+            </Link>
+          </div>
         </div>
       }
       {
