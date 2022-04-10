@@ -1,14 +1,15 @@
 import './styleLandingListContainer.css';
 
+import { Box, Button, Container } from '@mui/material';
 import { collection, getDocs, getFirestore, limit, query } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 
-import Button from '@mui/material/Button';
 import HeroSection from '../../components/heroSection/HeroSection';
 import ItemList from '../../components/ItemList/ItemList';
 import { Link } from 'react-router-dom';
 import LoadingSpinner from './../../components/LoadingSpinner/LoadingSpinner';
 import MsjBienvenida from '../../components/msjBienvenida/MsjBienvenida';
+import { styled } from '@mui/material/styles'
 import { useParams } from 'react-router-dom';
 
 function LandingListContainer() {
@@ -26,27 +27,40 @@ function LandingListContainer() {
         .finally(() => setLoading(false))
     }, [categoriaId])
 
+    const BotonVerMas = styled(Button) ({
+      backgroundColor: '#dcbebe',
+      borderColor: '#e5989b',
+      borderRadius: '5px',
+      width: '150px',
+      height: '30px',
+      margin: '10px',
+      fontSize: 16,
+      lineHeight: 1.5,
+      '&:hover': {
+        backgroundColor: '#ffb4a2',
+      },
+    })
 
   return (
     <>
       <HeroSection MsjBienvenida={MsjBienvenida} />
-      <div className='containerItems'>
+      <Container maxWidth="xl">
         <h2 className='tituloProd'>PRODUCTOS</h2>
         {loading ? 
           <div>
             <LoadingSpinner/>
           </div>
           :
-          <div>
+          <Box maxWidth="xl" sx={{ m: '5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <ItemList productos={productos} />
-            <div>
+            <Box maxWidth="xl" sx={{ m: '5rem', display: 'flex', justifyContent: 'center' }}>
               <Link to='/productos' >
-                <Button variant="contained" >VER MAS</Button>
+                <BotonVerMas variant="contained" size="large">VER MAS</BotonVerMas>
               </Link>
-            </div>
-          </div>
+            </Box>
+          </Box>
         }
-      </div>
+      </Container>
     </>
   )
 }

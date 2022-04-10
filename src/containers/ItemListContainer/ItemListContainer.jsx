@@ -1,12 +1,9 @@
-import './styleItemListContainer.css';
-
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 
+import { Box } from '@mui/material';
 import ItemList from '../../components/ItemList/ItemList';
-
 import LoadingSpinner from './../../components/LoadingSpinner/LoadingSpinner';
-
 import { useParams } from 'react-router-dom';
 
 function ItemListContainer() {
@@ -34,7 +31,7 @@ function ItemListContainer() {
 
   return (
     <>
-      <div className='containerItems'>
+      <Box maxWidth="xl">
         <h2 className='tituloProd'>PRODUCTOS</h2>
         {loading ? 
           <div>
@@ -42,7 +39,7 @@ function ItemListContainer() {
           </div>
           :
           <ItemList productos={productos} />}
-      </div>
+      </Box>
     </>
   )
 }

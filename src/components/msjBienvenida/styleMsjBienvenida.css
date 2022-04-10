@@ -1,11 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,600;1,300;1,400&display=swap');
-
 .msjBienvenida {
     position: absolute;
     display: block;
-    top: 42%;
-    left: 36.5%;
+    top: 33%;
+    left: 42%;
     color: #6d6875;
-    font-size: 6rem;
-    font-weight: 600;
 }
