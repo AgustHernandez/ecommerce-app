@@ -3,9 +3,7 @@ import './styleItemListContainer.css';
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 
-import HeroSection from '../../components/heroSection/HeroSection';
 import ItemList from '../../components/ItemList/ItemList';
-import MsjBienvenida from '../../components/msjBienvenida/MsjBienvenida';
 import { useParams } from 'react-router-dom';
 
 function ItemListContainer() {
@@ -33,7 +31,6 @@ function ItemListContainer() {
 
   return (
     <>
-      <HeroSection MsjBienvenida={MsjBienvenida} />
       <div className='containerItems'>
         <h2 className='tituloProd'>PRODUCTOS</h2>
         {loading ? <h2 className='loading'>Cargando...</h2>
