@@ -1,5 +1,6 @@
 import './styleItemDetail.css';
 
+import Button from '@mui/material/Button';
 import ItemCount from '../ItemCount/ItemCount';
 import { Link } from 'react-router-dom';
 import { useCartContext } from "../../context/cartContext"
@@ -46,7 +47,22 @@ function ItemDetail({producto}) {
               </Link>
             </div>
             :
-              <ItemCount stock={producto.stock} Add={Add} />
+              <div>
+                {(producto.stock > 0) ?
+                    <div>
+                      <label className='textoDisponibles'>Disponibles: {producto.stock}</label>
+                      <ItemCount stock={producto.stock} Add={Add} />
+                    </div>
+                    :
+                    <div>
+                      <label className='textoSinStock'>Producto sin stock</label>
+                      <br></br>
+                      <Link to='/productos'>
+                        <button>Seguir comprando</button>
+                      </Link>
+                      </div>
+                }
+              </div>
             }
           </div>
         </div>

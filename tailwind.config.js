@@ -1,6 +1,6 @@
 module.exports = {
   content: [
-    "./src/components/cartItem/CartItem.jsx"
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {},

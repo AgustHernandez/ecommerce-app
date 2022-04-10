@@ -4,6 +4,9 @@ import { collection, getDocs, getFirestore, query, where } from 'firebase/firest
 import { useEffect, useState } from 'react'
 
 import ItemList from '../../components/ItemList/ItemList';
+
+import LoadingSpinner from './../../components/LoadingSpinner/LoadingSpinner';
+
 import { useParams } from 'react-router-dom';
 
 function ItemListContainer() {
@@ -33,7 +36,10 @@ function ItemListContainer() {
     <>
       <div className='containerItems'>
         <h2 className='tituloProd'>PRODUCTOS</h2>
-        {loading ? <h2 className='loading'>Cargando...</h2>
+        {loading ? 
+          <div>
+            <LoadingSpinner/>
+          </div>
           :
           <ItemList productos={productos} />}
       </div>

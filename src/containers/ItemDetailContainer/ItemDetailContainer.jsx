@@ -4,6 +4,7 @@ import { doc, getDoc, getFirestore } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 
 import ItemDetail from '../../components/ItemDetail/ItemDetail';
+import LoadingSpinner from './../../components/LoadingSpinner/LoadingSpinner';
 import { useParams } from 'react-router-dom';
 
 function ItemDetailContainer() {
@@ -22,7 +23,10 @@ function ItemDetailContainer() {
 
   return (
     <>
-        { loading ? <h2 className='loading'>Cargando...</h2>
+        { loading ? 
+          <div>
+            <LoadingSpinner/>
+          </div>
         :
         <ItemDetail producto={producto}/>
         }
