@@ -3,9 +3,9 @@ import './styleLandingListContainer.css';
 import { collection, getDocs, getFirestore, limit, query } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 
-import { Button } from '@mui/material/Button';
 import HeroSection from '../../components/heroSection/HeroSection';
 import ItemList from '../../components/ItemList/ItemList';
+import LoadingSpinner from './../../components/LoadingSpinner/LoadingSpinner';
 import MsjBienvenida from '../../components/msjBienvenida/MsjBienvenida';
 import { useParams } from 'react-router-dom';
 
@@ -30,12 +30,15 @@ function LandingListContainer() {
       <HeroSection MsjBienvenida={MsjBienvenida} />
       <div className='containerItems'>
         <h2 className='tituloProd'>PRODUCTOS</h2>
-        {loading ? <h2 className='loading'>Cargando...</h2>
+        {loading ? 
+          <div>
+            <LoadingSpinner/>
+          </div>
           :
           <div>
             <ItemList productos={productos} />
             <div>
-              <Button variant="contained" >VER MAS</Button>
+              <button variant="contained" >VER MAS</button>
             </div>
           </div>
         }
