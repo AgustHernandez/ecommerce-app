@@ -40,7 +40,7 @@ function ItemDetail({producto}) {
             <div>
               <h2>Se ha agregado el producto al carrito</h2>
               <Link to='/productos'>
-                <button>Seguir comprando</button>
+                <Button>Seguir comprando</Button>
               </Link>
               <Link to='/cart'>
                 <h3>Terminar compra</h3>

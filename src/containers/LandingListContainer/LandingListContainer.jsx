@@ -3,8 +3,10 @@ import './styleLandingListContainer.css';
 import { collection, getDocs, getFirestore, limit, query } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 
+import Button from '@mui/material/Button';
 import HeroSection from '../../components/heroSection/HeroSection';
 import ItemList from '../../components/ItemList/ItemList';
+import { Link } from 'react-router-dom';
 import LoadingSpinner from './../../components/LoadingSpinner/LoadingSpinner';
 import MsjBienvenida from '../../components/msjBienvenida/MsjBienvenida';
 import { useParams } from 'react-router-dom';
@@ -38,7 +40,9 @@ function LandingListContainer() {
           <div>
             <ItemList productos={productos} />
             <div>
-              <button variant="contained" >VER MAS</button>
+              <Link to='/productos' >
+                <Button variant="contained" >VER MAS</Button>
+              </Link>
             </div>
           </div>
         }
