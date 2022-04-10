@@ -1,5 +1,6 @@
 import './styleItem.css';
 
+import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import React from 'react'
 
@@ -17,7 +18,7 @@ function Item({prod}) {
           <p className='descripProdItem'>{prod.description}</p>
           <p className='precioProdItem'>$ {prod.precio}</p>
           <Link to={`detalle/${prod.id}`}>
-            <button className='buttonProdItem'> Ver descripción </button>
+            <Button variant="outlined" > Ver descripción </Button>
           </Link>
         </div>
     </div>
@@ -26,4 +27,4 @@ function Item({prod}) {
 
 export default Item
 
-//<li key={prod.id}>{prod.name}</li>
+/*className='buttonProdItem'*/
