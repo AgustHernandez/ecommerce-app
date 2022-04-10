@@ -6,6 +6,7 @@ import Cart from './components/Cart/Cart';
 import CartContextProvider from './context/cartContext';
 import ItemDetailContainer from './containers/ItemDetailContainer/ItemDetailContainer';
 import ItemListContainer from './containers/ItemListContainer/ItemListContainer';
+import LandingListContainer from './containers/LandingListContainer/LandingListContainer'
 import NavBar from './components/navBar/NavBar';
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
         <div className='body'>
           <NavBar />
           <Routes>
-            <Route path='/' element={<ItemListContainer />} />
+            <Route path='/' element={<LandingListContainer />} />
             <Route path='/productos' element={<ItemListContainer />} />
             <Route path='/productos/detalle/:detalleId' element={<ItemDetailContainer />} />
             <Route path='/categoria/:categoriaId' element={<ItemListContainer />} />

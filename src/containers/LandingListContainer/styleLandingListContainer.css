@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,600;1,300;1,400&display=swap');
+
+.containerItems {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.loading {
+    font-size: 2rem;
+    margin-top: 25px;
+}
+
+.tituloProd {
+    text-align: center;
+    font-size: 3.5rem;
+    padding: 20px 0px;
+}
