@@ -1,13 +1,12 @@
 import './styleLandingListContainer.css';
 
-import { Box, Button, Container } from '@mui/material';
+import { Box, Button, CircularProgress, Container } from '@mui/material';
 import { collection, getDocs, getFirestore, limit, query } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 
 import HeroSection from '../../components/heroSection/HeroSection';
 import ItemList from '../../components/ItemList/ItemList';
 import { Link } from 'react-router-dom';
-import LoadingSpinner from './../../components/LoadingSpinner/LoadingSpinner';
 import MsjBienvenida from '../../components/msjBienvenida/MsjBienvenida';
 import { styled } from '@mui/material/styles'
 import { useParams } from 'react-router-dom';
@@ -28,7 +27,7 @@ function LandingListContainer() {
     }, [categoriaId])
 
     const BotonVerMas = styled(Button) ({
-      backgroundColor: '#dcbebe',
+      backgroundColor: '#b5838d',
       borderColor: '#e5989b',
       borderRadius: '5px',
       width: '150px',
@@ -47,9 +46,9 @@ function LandingListContainer() {
       <Container maxWidth="xl">
         <h2 className='tituloProd'>PRODUCTOS</h2>
         {loading ? 
-          <div>
-            <LoadingSpinner/>
-          </div>
+          <Box maxWidth="xl" sx={{ m: '5rem', display: 'flex', justifyContent: 'center' }}>
+            <CircularProgress color="primary" sx={{color: '#b5838d'}}  />
+          </Box>
           :
           <Box maxWidth="xl" sx={{ m: '5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <ItemList productos={productos} />

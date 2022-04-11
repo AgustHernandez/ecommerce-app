@@ -10,8 +10,13 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material/styles'
 
 function Item({prod}) {
+
+  const BotonDetalle = styled(Button) ({
+    color: '#b5838d',
+  })
 
   return (
     <Card sx={{ maxWidth: 345 }} variant="outlined" key={prod.id}>
@@ -30,9 +35,9 @@ function Item({prod}) {
       </Link>
       <CardActions>
         <Link to={`detalle/${prod.id}`}>
-          <Button>
+          <BotonDetalle>
             Ver descripción
-          </Button>
+          </BotonDetalle>
         </Link>
       </CardActions>
     </Card>
