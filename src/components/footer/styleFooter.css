@@ -1,0 +1,30 @@
+.footer {
+    background-color: #E5989B;
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.menuFooter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px
+}
+
+.menu :link {
+    color: white;
+}
+
+.menu :visited {
+    color: white;
+}
+
+.menuLista {
+    list-style: none;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 100;
+}
