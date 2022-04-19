@@ -1,16 +1,16 @@
-import React from 'react'
-import ImgHeroSection from '../imgHeroSection/ImgHeroSection';
-
 import './styleHeroSection.css';
 
+import { Container } from '@mui/material';
+import ImgHeroSection from '../imgHeroSection/ImgHeroSection';
+import React from 'react'
 
 function HeroSection({MsjBienvenida}) {
 
   return (
-    <div className='HeroSection'>
+    <Container maxWidth="xl">
       <ImgHeroSection/>
       <MsjBienvenida/> 
-    </div>
+    </Container>
   )
 }
 

@@ -1,9 +1,13 @@
 
 .containerDetail {
+    margin: 80px 0px;
+}
+
+.gridProd {
     display: flex;
     justify-content: center;
-    gap: 150px;
-    margin: 80px 0px;
+    align-items:center;
+    padding-top: 0;
 }
 
 .imagenProd {
@@ -72,9 +76,9 @@
 
 .costoYenvio {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-top: 20px;
-    gap: 30px;
+    align-items: center;
 }
 
 .parrafoCostoEnvio {

@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Cart from './components/Cart/Cart';
 import CartContextProvider from './context/cartContext';
+import Footer from './components/footer/Footer';
 import ItemDetailContainer from './containers/ItemDetailContainer/ItemDetailContainer';
 import ItemListContainer from './containers/ItemListContainer/ItemListContainer';
 import LandingListContainer from './containers/LandingListContainer/LandingListContainer'
@@ -26,6 +27,7 @@ function App() {
             <Route path='/cart' element={<Cart />} />
             <Route path='/cart/pago' element={<Cart />} />
           </Routes>
+          <Footer/>
         </div>
       </BrowserRouter>
     </CartContextProvider>

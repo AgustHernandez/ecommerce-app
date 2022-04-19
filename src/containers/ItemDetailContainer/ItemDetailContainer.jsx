@@ -1,10 +1,10 @@
 import './styleItemDetailContainer.css';
 
+import { Box, CircularProgress, Container } from '@mui/material';
 import { doc, getDoc, getFirestore } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 
 import ItemDetail from '../../components/ItemDetail/ItemDetail';
-import LoadingSpinner from './../../components/LoadingSpinner/LoadingSpinner';
 import { useParams } from 'react-router-dom';
 
 function ItemDetailContainer() {
@@ -23,13 +23,15 @@ function ItemDetailContainer() {
 
   return (
     <>
-        { loading ? 
-          <div>
-            <LoadingSpinner/>
-          </div>
+    <Container maxWidth="xl" sx={{ heigth: 'auto', mb: 20 }} >
+      { loading ? 
+        <Box sx={{ m: 5, display: 'flex', justifyContent: 'center' }}>
+          <CircularProgress color="primary" sx={{color: '#b5838d'}}  />
+        </Box>
         :
         <ItemDetail producto={producto}/>
-        }
+      }
+      </Container>
     </>
   )
 }

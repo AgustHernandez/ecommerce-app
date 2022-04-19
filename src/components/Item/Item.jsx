@@ -10,32 +10,34 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material/styles'
 
 function Item({prod}) {
 
+  const BotonDetalle = styled(Button) ({
+    color: '#b5838d',
+  })
+
   return (
     <Card sx={{ maxWidth: 345 }} variant="outlined" key={prod.id}>
-      <CardActionArea>
-        <CardMedia>
-          component="img"
-          height="140"
-          src={prod.imagen}
-          alt={prod.nombre}
-        </CardMedia>
-        <CardContent>
-          <Typography gutterBottom variant="h4" component="div">
-            {prod.nombre}
-          </Typography>
-          <Typography variant="h5" color="text.secondary">
-            $ {prod.precio}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+      <Link to={`detalle/${prod.id}`}>
+        <CardActionArea>
+          <CardMedia component="img" height="140" image={prod.imagen} alt={prod.nombre}/>
+          <CardContent>
+            <Typography gutterBottom variant="h4" component="div">
+              {prod.nombre}
+            </Typography>
+            <Typography variant="h5" color="text.secondary">
+              $ {prod.precio}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Link>
       <CardActions>
         <Link to={`detalle/${prod.id}`}>
-          <Button>
+          <BotonDetalle>
             Ver descripción
-          </Button>
+          </BotonDetalle>
         </Link>
       </CardActions>
     </Card>
@@ -43,19 +45,3 @@ function Item({prod}) {
 }
 
 export default Item
-
-/*<div key={prod.id} className='cardItem'>
-        <div className='titleItem'>
-          <h2 className='nombreProdItem'>{prod.nombre}</h2>
-        </div>
-        <div>
-          <img src={prod.imagen} alt={prod.nombre} className='imgProdItem'/>
-        </div>
-        <div className='containerDescripItem'>
-          <p className='descripProdItem'>{prod.description}</p>
-          <p className='precioProdItem'>$ {prod.precio}</p>
-          <Link to={`detalle/${prod.id}`}>
-            <Button variant="outlined" > Ver descripción </Button>
-          </Link>
-        </div>
-    </div>*/

@@ -1,12 +1,8 @@
-import './styleItemListContainer.css';
-
+import { Box, CircularProgress, Container } from '@mui/material';
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 
 import ItemList from '../../components/ItemList/ItemList';
-
-import LoadingSpinner from './../../components/LoadingSpinner/LoadingSpinner';
-
 import { useParams } from 'react-router-dom';
 
 function ItemListContainer() {
@@ -34,15 +30,15 @@ function ItemListContainer() {
 
   return (
     <>
-      <div className='containerItems'>
+      <Container maxWidth="xl" sx={{ heigth: 'auto', mb: 20 }} >
         <h2 className='tituloProd'>PRODUCTOS</h2>
         {loading ? 
-          <div>
-            <LoadingSpinner/>
-          </div>
+          <Box maxWidth="xl" sx={{ m: '5rem', display: 'flex', justifyContent: 'center' }}>
+            <CircularProgress color="primary" sx={{color: '#b5838d'}}  />
+          </Box>
           :
           <ItemList productos={productos} />}
-      </div>
+      </Container>
     </>
   )
 }

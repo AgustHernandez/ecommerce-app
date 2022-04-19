@@ -2,6 +2,8 @@ import './styleItemCount.css';
 
 import React, { useState } from 'react'
 
+import { Box } from '@mui/material';
+
 function ItemCount({stock, Add}) {
   const [cant, setCant] = useState(1)
   const [stockRemanente, setStockRemanente] = useState(stock)
@@ -29,7 +31,7 @@ function ItemCount({stock, Add}) {
   }
 
   return (
-    <div className='container'>
+    <Box>
       <div className='containerCant'>
         <button onClick={restaCant} className='buttonCantMenos'>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width={15} height={15}>
@@ -46,7 +48,7 @@ function ItemCount({stock, Add}) {
       <button onClick={agregarCarrito} className='buttonAgregar'>
         Agregar al carrito
       </button>
-    </div>
+    </Box>
   )
 }
 

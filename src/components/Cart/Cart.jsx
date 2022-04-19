@@ -5,7 +5,6 @@ import { addDoc, collection, documentId, getDocs, getFirestore, query, where, wr
 import CartItem from "../cartItem/CartItem"
 import { Link } from 'react-router-dom';
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
-import Pago from '../Pago/Pago';
 import { useCartContext } from "../../context/cartContext"
 import { useState } from 'react';
 
@@ -160,7 +159,6 @@ function Cart() {
                     <input type="number" name='codigoPostal' placeholder='Codigo Postal' value={dataForm.codigoPostal} onChange={guardarForm} className='inputCodPostal' />
                 </div>
               </form>
-              <Pago/>
               <button onClick={generarOrden} className="botonVaciarCart">
                 Pagar
               </button>
