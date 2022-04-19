@@ -7,10 +7,12 @@ import { Link } from 'react-router-dom';
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { useCartContext } from "../../context/cartContext"
 import { useState } from 'react';
+import { Textbox } from 'react-inputs-validation';
+import 'react-inputs-validation/lib/react-inputs-validation.min.css';
 
 function Cart() {
-  const [dataForm, setDataForm] = useState( {nombre: '',provincia: '', codigoPostal: '', email: ''})
-  const [dataEmail, setDataEmail] = useState( {email: ''})
+  const [dataForm, setDataForm] = useState( {nombre: '',provincia: '', email: ''})
+  const [dataEmail, setDataEmail] = useState( {email: '', valido: false})
   const [emailGuardado, setEmailGuardado] = useState(false)
   const [procesandoPago, setProcesandoPago] = useState(false)
   const [id, setId] = useState('')
@@ -55,7 +57,15 @@ function Cart() {
     setProcesandoPago(false)
   }
 
-  const guardarForm = (e) => {
+  const guardarForm = (name, value) => {
+    setDataForm({
+        ...dataForm,
+        [name]: value
+    })
+
+  }
+
+  const guardarProv = (e) => {
     setDataForm({
         ...dataForm,
         [e.target.name]: e.target.value
@@ -63,16 +73,17 @@ function Cart() {
 
   }
 
-  const guardarEmail = (e) => {
+  const guardarEmail = (email, valido) => {
     setDataEmail({
-        ...dataEmail,
-        [e.target.name]: e.target.value
+        ...dataEmail,email
     })
-    
+    setDataEmail({
+      ...dataEmail,valido
+  })
   }
 
   const terminarCompra = () => {
-    if(dataEmail.email !== '')
+    if(dataEmail.valido)
     {
       setEmailGuardado(true)
     }
@@ -142,21 +153,67 @@ function Cart() {
             <div>
               <form onSubmit={generarOrden}>
                 <div className='divForm'>
-                  <input type="email" name='email' placeholder='Email' value={dataEmail.email} onChange={guardarForm} className='formEmail' />
+                <Textbox
+                        attributesInput={{
+                          id: "email",
+                          placeholder: "  E-mail",
+                          type: "text",
+                          className: "formEmail"
+                        }}
+                        value={dataEmail.email} 
+                        onChange={e => {}} 
+                        onBlur={e => {}}
+                        validationOption={{
+                          name: "email",
+                          check: true, 
+                          required: true,
+                          customFunc: email => {
+                            const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                            if (reg.test(String(email).toLowerCase())) {
+                              guardarEmail(email, true);
+                              return true;
+                            } else {
+                              guardarEmail(email, false);
+                              return "Por favor ingrese un email valido.";
+                            }
+                          }
+                        }}
+                      />
                 </div>
                 <div className='divForm'>
-                  <input type="text" name='nombre' placeholder='Nombre y Apellido' value={dataForm.nombre} onChange={guardarForm} className='formEmail' />
+                <Textbox
+                        attributesInput={{
+                          id: "nombre",
+                          placeholder: "  Apellido y nombre",
+                          type: "text",
+                          className: "formEmail"
+                        }}
+                        value={dataForm.nombre} 
+                        onChange={e => {}} 
+                        onBlur={e => {}}
+                        validationOption={{
+                          name: "nombre",
+                          check: true, 
+                          required: true,
+                          customFunc: nombre => {
+                            if (nombre.length > 0) {
+                              guardarForm('nombre', nombre)
+                              console.log(dataForm)
+                              return true;
+                            } else {
+                              return "Por favor ingrese su nombre y apellido valido.";
+                            }
+                          }
+                        }}
+                      />
                 </div>
                 <div className='divForm'>
                     <label htmlFor="provincia" className='labelProv'> Provincia </label>
-                    <select name='provincia' value={dataForm.provincia} onChange={guardarForm} className='selectProv'>
+                    <select name='provincia' value={dataForm.provincia} onChange={guardarProv} className='selectProv'>
                       <option value="Elegir"> Elegir una opción </option>
                       <option value="CABA"> CABA </option>
                       <option value="Buenos Aires"> Buenos Aires </option>
                     </select>
-                </div>
-                <div className='divForm'>
-                    <input type="number" name='codigoPostal' placeholder='Codigo Postal' value={dataForm.codigoPostal} onChange={guardarForm} className='inputCodPostal' />
                 </div>
               </form>
               <button onClick={generarOrden} className="botonVaciarCart">
@@ -170,7 +227,32 @@ function Cart() {
                   <h3 className='tituloForm'>DATOS DE CONTACTO</h3>
                   <form>
                       <div className='divForm'>
-                          <input type="email" name='email' placeholder='Email' value={dataEmail.email} onChange={guardarEmail} className='formEmail' />
+                      <Textbox
+                        attributesInput={{
+                          id: "email",
+                          placeholder: "  E-mail",
+                          type: "text",
+                          className: "formEmail"
+                        }}
+                        value={dataEmail.email} 
+                        onChange={e => {}} 
+                        onBlur={e => {}}
+                        validationOption={{
+                          name: "email",
+                          check: true, 
+                          required: true,
+                          customFunc: email => {
+                            const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                            if (reg.test(String(email).toLowerCase())) {
+                              guardarEmail(email, true);
+                              return true;
+                            } else {
+                              guardarEmail(email, false);
+                              return "Por favor ingrese un email valido.";
+                            }
+                          }
+                        }}
+                      />
                       </div>
                       <div className='divForm'>
                           <input type="checkbox" name="ofertas" id="ofertas" className='inputCheck' />
@@ -184,11 +266,13 @@ function Cart() {
                           <label htmlFor="envio" className='labelCheck'> Envío 72hs. hábiles </label>
                       </div>
                   </div>
-                  <Link to='/cart/pago'>
+                  {dataEmail.valido ?
+                    <Link to='/cart/pago'>
                     <button onClick={terminarCompra} className="botonVaciarCart">
                         Terminar compra
                     </button>
-                  </Link>
+                    </Link>
+                  : <br></br> }
                 </div>
               }
             </div>
